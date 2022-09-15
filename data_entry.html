@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="EntryApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <script src="entry_app.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body ng-controller="EntryAppController">
+
+    <div class="container" >
+        <h1 class="display-3 my-2 pb-2">Data Entry App</h1>
+        <h4 class="">{{message}}</h4>
+        <form class="my-2">
+            <div class="form-row align-items-center row">
+              <div class="col-4 my-1">
+                <!-- <label class="sr-only" for="inlineFormInputName">Name</label> -->
+                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe" ng-model="name">
+              </div>
+              <div class="col-4 my-1">
+                <!-- <label class="sr-only" for="inlineFormInputGroupUsername">Username</label> -->
+                <input type="text" class="form-control {{status_color}}" id="inlineFormInputUsername" placeholder="Username" ng-model="username">
+              </div>
+              <div class="col-3 my-1">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="autoSizingCheck2" ng-model="is_checked">
+                  <label class="form-check-label" for="autoSizingCheck2">
+                    Remember me
+                  </label>
+                </div>
+              </div>
+              <div class="col-1 my-1">
+                <button type="submit" class="btn btn-primary" ng-click="addTodo();">Submit</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- <div class="row" ng-repeat="todo in todoList">
+            <input type="text", class="col-1 btn btn-danger" value="Delete" ng-click="">
+            <div class="col-4">{{todo.name}}</div>
+            <div class="col-4">{{todo.username}}</div>
+            <div class="col-auto">{{todo.done}}</div>
+          </div> -->
+
+
+
+          <table class="table p-3">
+            <!-- <caption>Demo Table</caption> -->
+            <thead class="thead-dark">
+                <tr scope="row" class="row">
+                    <!-- <th class="col-3"><a href="app1.html" class="btn btn-info">App1</a></th> -->
+                    <th scope="col" class="col-4">Name</th>
+                    <th scope="col" class="col-4">Username</th>
+                    <th scope="col" class="col-3">Is Checked</th>
+                    <th scope="col" class="col-1">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row" ng-repeat="todo in todoList">
+                    <td class="col-4" scope="col">{{todo.name}}</td>
+                    <td class="col-4" scope="col">{{todo.username}}</td>
+                    <td class="col-3" scope="col">{{todo.done}}</td>
+                    <td class="col-1" scope="col"><input type="button" value="Delete" class="btn btn-danger" ng-click="removeItem($index);"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+
+          <!-- <h1>{{ name }}</h1> -->
+          <!-- <h1>{{is_checked}}</h1> -->
+
+          <!-- 
+            1. List in Angular
+            2. Show angluar list-item in html
+            3. add list item from html
+            4. delete item from html
+           -->
+
+    </div>
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
