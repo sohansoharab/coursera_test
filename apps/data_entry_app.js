@@ -11,6 +11,7 @@
         $scope.is_checked = "false"
         $scope.message = ""
         $scope.status_class = ""
+        $scope.flag = 0
 
         // $scope.print = function () {
         //     console.log($scope.username)
@@ -22,23 +23,22 @@
 
         $scope.addTodo = function () {
             if ($scope.name && $scope.username) {
+                // console.log($scope.name + ' ' + $scope.username)
                 $scope.todoList.forEach(function (element) {
-                    if ($scope.username !== element.username) {
-                        console.log(element)
-                        $scope.todoList.push({name: $scope.name, username: $scope.username, done: $scope.is_checked});
-                        $scope.message = "";
-                        $scope.status_class = "green";
-                    } else if ($scope.username == element.username) {
+                    // console.log(element.name)
+                    // console.log(element.username)
+                    $scope.flag = 0
+                    if (element.username == $scope.username) {
+                        $scope.flag = 1
                         $scope.message = "User already exists";
                     }
                 })
+                if (!$scope.flag) {
+                    $scope.todoList.push({name: $scope.name, username: $scope.username, done: $scope.is_checked});
+                }
             } else if (!$scope.name || !$scope.username) {
-                
                 $scope.message = "Name or Username fields can not be empty";
-                $scope.status_class = "red";
-
             }
-            
         }
 
         $scope.removeItem = function (x) {
